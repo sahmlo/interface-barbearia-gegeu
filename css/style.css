@@ -1,0 +1,123 @@
+/* Root CSS */
+:root {
+    --fundo-escuro:  #26211F;  
+    --texto-claro:   #EDE5DB;  
+    --cor-principal: #A66124;  
+    --cor-detalhes:  #736151;  
+    --cor-borda:     #733816;  
+}
+
+/* ---------------------------------------------------------------- */
+
+/* Virtualização de Fontes */
+@font-face {
+    font-family: titulo;
+    src: url(/fonts//RumbleBrave.otf);
+}
+
+@font-face {
+    font-family: subtitulo;
+    src: url(/fonts/BebasNeueRegular.otf);
+}
+
+/* ---------------------------------------------------------------- */
+
+/* Estilização Geral */
+
+body {
+    background-color: var(--fundo-escuro);
+    color: var(--texto-claro);
+    margin: 0;
+    padding: 20px 0;
+}
+
+h1 {
+    font-family: titulo;
+    font-size: 70px;
+    text-align: center;
+    color: var(--cor-principal);
+    animation: surgirTopo 0.8s ease-out;
+    transition: transform 0.3s ease;
+}
+
+h1:hover {
+    transform: scale(1.03);
+}
+
+h2 {
+    font-family: tunado;
+    font-size: 38px;
+    text-align: center;
+    color: var(--cor-detalhes);
+    animation: surgirTopo 1s ease-out;
+}
+
+hr {
+    width: 70%;
+    height: 3px;
+    background: var(--cor-borda);
+    border: none;
+    border-radius: 2px;
+    animation: expandirLinha 1.2s ease-out;
+}
+
+p {
+    width: 70%;
+    margin: auto;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--texto-claro);
+    transition: color 0.3s ease;
+}
+
+p:hover {
+    color: var(--cor-principal);
+}
+
+/* ---------------------------------------------------------------- */
+
+.caixinha {
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+img {
+    height: 250px;
+    border-radius: 8px;
+    border: 2px solid var(--cor-borda);
+    filter: blur(2px) grayscale(100%);
+    margin: 13px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+img:hover {
+    filter: blur(0px) grayscale(0%);
+    transform: scale(1.1) rotate(2deg);
+    border-color: var(--cor-principal);
+    box-shadow: 0 12px 25px rgba(166, 97, 36, 0.45);
+}
+
+/* ---------------------------------------------------------------- */
+
+/* Vídeo */
+
+video {
+    width: 70%;
+    margin: auto;
+    display: block;
+    border-radius: 12px;
+    border: 3px solid var(--cor-borda);
+    background-color: #1a1615;
+    animation: pulsoVideoDark 3s infinite ease-in-out;
+    transition: transform 0.3s ease;
+}
+
+video:hover {
+    transform: scale(1.02);
+}
