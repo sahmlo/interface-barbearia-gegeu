@@ -1,4 +1,5 @@
 /* Root CSS */
+
 :root {
     --fundo-escuro: #26211F;
     --texto-claro: #EDE5DB;
@@ -7,20 +8,17 @@
     --cor-borda: #733816;
 }
 
-/* ---------------------------------------------------------------- */
+/* Fontes */
 
-/* Virtualização de Fontes */
 @font-face {
     font-family: titulo;
-    src: url("/fonts/RumbleBrave.otf");
+    src: url(/fonts/RumbleBrave.otf);
 }
 
 @font-face {
     font-family: subtitulo;
-    src: url("/fonts/BebasNeueRegular.otf");
+    src: url(/fonts/BebasNeueRegular.otf);
 }
-
-/* ---------------------------------------------------------------- */
 
 /* Estilização Geral */
 
@@ -33,7 +31,6 @@ body {
     color: var(--texto-claro);
     margin: 0;
     padding: 20px 0;
-    overflow-x: hidden;
 }
 
 h1 {
@@ -41,9 +38,9 @@ h1 {
     font-size: 70px;
     text-align: center;
     color: var(--cor-principal);
+    margin: 20px 0 10px;
     animation: surgirTopo 0.8s ease-out;
     transition: transform 0.3s ease;
-    margin: 30px 20px 15px;
 }
 
 h1:hover {
@@ -55,8 +52,8 @@ h2 {
     font-size: 38px;
     text-align: center;
     color: var(--cor-detalhes);
+    margin: 10px 0 25px;
     animation: surgirTopo 1s ease-out;
-    margin: 10px 20px 30px;
 }
 
 hr {
@@ -65,8 +62,8 @@ hr {
     background: var(--cor-borda);
     border: none;
     border-radius: 2px;
-    animation: expandirLinha 1.2s ease-out;
     margin: 30px auto;
+    animation: expandirLinha 1.2s ease-out;
 }
 
 p {
@@ -84,44 +81,40 @@ p:hover {
     color: var(--cor-principal);
 }
 
-/* ---------------------------------------------------------------- */
-
 /* Galeria */
 
 .caixinha {
-    width: min(90%, 1100px);
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
 }
 
-img {
+.caixinha img {
+    width: calc((100% - 40px) / 3);
     height: 250px;
-    max-width: 100%;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid var(--cor-borda);
     filter: blur(2px) grayscale(100%);
-    margin: 13px;
+    margin: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
-img:hover {
+.caixinha img:hover {
     filter: blur(0px) grayscale(0%);
     transform: scale(1.1) rotate(2deg);
     border-color: var(--cor-principal);
     box-shadow: 0 12px 25px rgba(166, 97, 36, 0.45);
 }
 
-/* ---------------------------------------------------------------- */
-
 /* Vídeo */
 
-video {
+.video-container video {
     width: 70%;
     max-width: 1100px;
     margin: auto;
@@ -133,73 +126,82 @@ video {
     transition: transform 0.3s ease;
 }
 
-video:hover {
+.video-container video:hover {
     transform: scale(1.02);
 }
 
-/* ---------------------------------------------------------------- */
+/* Animações */
+
+@keyframes surgirTopo {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandirLinha {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 70%;
+    }
+}
+
+@keyframes pulsoVideoDark {
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(166, 97, 36, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(166, 97, 36, 0.25);
+    }
+}
 
 /* Responsividade */
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
+
     body {
-        padding: 10px 0;
+        padding: 15px 0;
     }
 
     h1 {
-        font-size: 50px;
+        font-size: 48px;
     }
 
     h2 {
         font-size: 30px;
     }
 
-    hr {
-        width: 85%;
-    }
-
     p {
         width: 85%;
-        font-size: 17px;
-        text-align: left;
-    }
-
-    .caixinha {
-        width: 90%;
-        gap: 5px;
-    }
-
-    img {
-        width: 100%;
-        height: auto;
-        max-height: 300px;
-        margin: 8px;
-    }
-
-    video {
-        width: 85%;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 40px;
-    }
-
-    h2 {
-        font-size: 25px;
-    }
-
-    p {
-        width: 90%;
         font-size: 16px;
     }
 
     hr {
-        width: 90%;
+        width: 85%;
     }
 
-    video {
+    .caixinha {
+        width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .caixinha img {
+        width: 90%;
+        height: 250px;
+    }
+
+    .video-container video {
         width: 90%;
     }
 }
