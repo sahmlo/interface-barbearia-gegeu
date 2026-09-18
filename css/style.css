@@ -1,10 +1,10 @@
 /* Root CSS */
 :root {
-    --fundo-escuro:  #26211F;  
-    --texto-claro:   #EDE5DB;  
-    --cor-principal: #A66124;  
-    --cor-detalhes:  #736151;  
-    --cor-borda:     #733816;  
+    --fundo-escuro: #26211F;
+    --texto-claro: #EDE5DB;
+    --cor-principal: #A66124;
+    --cor-detalhes: #736151;
+    --cor-borda: #733816;
 }
 
 /* ---------------------------------------------------------------- */
@@ -12,23 +12,28 @@
 /* Virtualização de Fontes */
 @font-face {
     font-family: titulo;
-    src: url(/fonts//RumbleBrave.otf);
+    src: url("/fonts/RumbleBrave.otf");
 }
 
 @font-face {
     font-family: subtitulo;
-    src: url(/fonts/BebasNeueRegular.otf);
+    src: url("/fonts/BebasNeueRegular.otf");
 }
 
 /* ---------------------------------------------------------------- */
 
 /* Estilização Geral */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--fundo-escuro);
     color: var(--texto-claro);
     margin: 0;
     padding: 20px 0;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -38,6 +43,7 @@ h1 {
     color: var(--cor-principal);
     animation: surgirTopo 0.8s ease-out;
     transition: transform 0.3s ease;
+    margin: 30px 20px 15px;
 }
 
 h1:hover {
@@ -45,11 +51,12 @@ h1:hover {
 }
 
 h2 {
-    font-family: tunado;
+    font-family: subtitulo;
     font-size: 38px;
     text-align: center;
     color: var(--cor-detalhes);
     animation: surgirTopo 1s ease-out;
+    margin: 10px 20px 30px;
 }
 
 hr {
@@ -59,10 +66,12 @@ hr {
     border: none;
     border-radius: 2px;
     animation: expandirLinha 1.2s ease-out;
+    margin: 30px auto;
 }
 
 p {
     width: 70%;
+    max-width: 1000px;
     margin: auto;
     text-align: justify;
     font-size: 18px;
@@ -77,17 +86,22 @@ p:hover {
 
 /* ---------------------------------------------------------------- */
 
+/* Galeria */
+
 .caixinha {
-    width: fit-content;
+    width: min(90%, 1100px);
     margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 img {
     height: 250px;
+    max-width: 100%;
+    object-fit: cover;
     border-radius: 8px;
     border: 2px solid var(--cor-borda);
     filter: blur(2px) grayscale(100%);
@@ -109,6 +123,7 @@ img:hover {
 
 video {
     width: 70%;
+    max-width: 1100px;
     margin: auto;
     display: block;
     border-radius: 12px;
@@ -120,4 +135,71 @@ video {
 
 video:hover {
     transform: scale(1.02);
+}
+
+/* ---------------------------------------------------------------- */
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px 0;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    hr {
+        width: 85%;
+    }
+
+    p {
+        width: 85%;
+        font-size: 17px;
+        text-align: left;
+    }
+
+    .caixinha {
+        width: 90%;
+        gap: 5px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        margin: 8px;
+    }
+
+    video {
+        width: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    p {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    hr {
+        width: 90%;
+    }
+
+    video {
+        width: 90%;
+    }
 }
